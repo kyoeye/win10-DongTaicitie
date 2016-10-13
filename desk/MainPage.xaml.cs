@@ -1,4 +1,5 @@
-﻿using System;
+﻿using desk.page;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -35,7 +36,14 @@ namespace desk
             var requested = PeriodicUpdateRecurrence.HalfHour; 
             var updater = TileUpdateManager.CreateTileUpdaterForApplication();
             updater.StartPeriodicUpdate(tilecontent, requested);
+
+
             //还差定时获取，慢慢来
+        }
+
+        private void mybutton2_Click(object sender, RoutedEventArgs e)
+        {
+            Myfrome.Navigate(typeof(Socketpage));
         }
     }
 }

@@ -8,6 +8,11 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Button Name="mybutton" Content="请求更新磁贴" Width="auto" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center" Click="mybutton_Click"/>
+        <TextBlock Text="代码测试程序"  FontSize="20" HorizontalAlignment="Center" Foreground="Red" />
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" >
+          <Button Margin="0,0,0,5" Name="mybutton" Content="请求更新磁贴" Width="auto" Height="50" Click="mybutton_Click"/>
+          <Button Margin="0,5,0,0" Name="mybutton2" Content="套接字测试页" Width="auto" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center" Click="mybutton2_Click"/>
+        </StackPanel>
+        <Frame Name="Myfrome"/>
     </Grid>
 </Page>
