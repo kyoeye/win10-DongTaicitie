@@ -18,7 +18,7 @@
         </Grid.RowDefinitions>
         <Border Background="#FF00AEFF" Grid.RowSpan="2" />
         <Button Grid.Row="0" Content="button1" Margin="0,5,10,5" HorizontalAlignment="Right" />
-        <TextBlock Grid.Row="0" Text="Socket测试程序" Margin="10,0,0,0" FontSize="20" Foreground="White" VerticalAlignment="Center" />
+        <TextBlock Grid.Row="0" Text="Socket测试程序（客户端）" Margin="10,0,0,0" FontSize="20" Foreground="White" VerticalAlignment="Center" />
         <StackPanel Grid.Row="1" Orientation="Horizontal" >
             <TextBox Name="Iptextbox" PlaceholderText="请输入服务器Ip地址" Margin="10,10,10,10" Width="200" HorizontalAlignment="Left" />
             <TextBox  Margin="10,10,10,10" Width="100" HorizontalAlignment="Left" />
@@ -27,7 +27,7 @@
 
             </StackPanel>
         <StackPanel Grid.Row="2" >
-            <TextBox Name="Textbox1" Margin="20,10,20,10" Height="100" />
+            <TextBox PlaceholderText="如果服务器有推送，这里将会显示" Name="Textbox1" Margin="20,10,20,10" Height="100" />
             <TextBox Name="Textbox2" Margin="20,10,20,10" Height="100" />
         </StackPanel>
             <Grid Grid.Row="3"  >

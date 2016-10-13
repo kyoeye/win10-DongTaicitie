@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Sockets;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
@@ -30,14 +31,32 @@ namespace desk.page
 
         private void Startlisten_Click(object sender, RoutedEventArgs e)
         {
-            //当点击开始监听时 在服务器创建一个负责监听IP地址跟端口号的Socker
-            Socket socketWatch = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-
+            //创建负责通信的Socket
         }
 
         private void lianjiebutton_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                Socket socketSend = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+          
+              string ip = "123.207.45.119";
+              int DKH = 800;
+              IPAddress ipdz = IPAddress.Parse(ip);
+              IPEndPoint point = new IPEndPoint(ipdz, DKH);
+          
+    
+            //获得远程应用程序的IP地址和端口号
+            socketSend.Bind(point); // 关联
+            socketSend.Listen(100);//监听
 
+            Byte[] recData = new Byte[300000000];//缓冲区大小
+            Socket hostSocket = socketSend.AcceptAsync();
+  }
+            catch
+            {
+
+            }
         }
     }
 }
