@@ -55,7 +55,7 @@ namespace desk.page
             {
                 
                 string idtext = id[a];
-                Items.Add(new Item { name = "测试" + idtext });
+                Items.Add(new Item { name = "测试" + idtext +"第"+i});
                 a++;
             }
         }
