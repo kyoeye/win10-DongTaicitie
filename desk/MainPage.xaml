@@ -2,17 +2,47 @@
     x:Class="desk.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:desk"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:desk"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBlock Text="代码测试程序"  FontSize="20" HorizontalAlignment="Center" Foreground="Red" />
-        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" >
-          <Button Margin="0,0,0,5" Name="mybutton" Content="请求更新磁贴" Width="auto" Height="50" Click="mybutton_Click"/>
-          <Button Margin="0,5,0,0" Name="mybutton2" Content="套接字测试页" Width="auto" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center" Click="mybutton2_Click"/>
-        </StackPanel>
-        <Frame Name="Myfrome"/>
+        <TextBlock
+            HorizontalAlignment="Center"
+            Foreground="Red"
+            FontSize="20"
+            Text="代码测试程序" />
+        <ScrollViewer>
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Button
+                    Name="mybutton"
+                    Width="120"
+                    Height="50"
+                    Margin="0,0,0,0"
+                    Click="mybutton_Click"
+                    Content="请求更新磁贴" />
+                <Button
+                    Name="mybutton2"
+                    Width="120"
+                    Height="50"
+                    Margin="0,5,0,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Click="mybutton2_Click"
+                    Content="套接字测试页" />
+                <Button
+                    Name="mybutton3"
+                    Width="120"
+                    Height="50"
+                    Margin="0,5,0,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Click="mybutton3_Click"
+                    Content="item测试页" />
+            </StackPanel>
+
+        </ScrollViewer>
+        <Frame Name="Myfrome" />
     </Grid>
 </Page>

@@ -45,5 +45,10 @@ namespace desk
         {
             Myfrome.Navigate(typeof(Socketpage));
         }
+
+        private void mybutton3_Click(object sender, RoutedEventArgs e)
+        {
+            Myfrome.Navigate(typeof(itembeta));
+        }
     }
 }

@@ -51,7 +51,7 @@ namespace desk.page
             socketSend.Listen(100);//监听
 
             Byte[] recData = new Byte[300000000];//缓冲区大小
-            Socket hostSocket = socketSend.AcceptAsync();
+            //Socket hostSocket = socketSend.AcceptAsync();
   }
             catch
             {
