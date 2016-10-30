@@ -11,9 +11,15 @@
         <GridView x:Name="Mygridview" >
             <GridView.ItemTemplate >
                 <DataTemplate >
-                    <Grid Width="100" Height="200" >
-                        <Image Name="Gridimage"/>
-                        <TextBlock Text="{Binding name }" Name="Imagetext"/>
+                    <Grid Width="150" Height="200" >
+                        <Grid  Width="160" Height="250" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Image Stretch="UniformToFill" Width="160" Height="250" Source="{Binding itemuri}" Name="Gridimage" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </Grid>
+                        <StackPanel >
+                            
+                         <TextBlock Text="{Binding name }" Name="Imagetext"/>
+                         <TextBlock Text="{Binding itemuri}" Name="imageurl" />
+                        </StackPanel>
                         
                     </Grid>
                 </DataTemplate>

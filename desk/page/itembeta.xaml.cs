@@ -45,6 +45,7 @@ namespace desk.page
         public class Item
         {
             public string name { get; set; }
+            public string itemuri { get; set; }
             //这里还差一个图片链接的封装。。。可是我特么不知道怎么封。。这条注释是最后留的。。。
 
         }
@@ -55,7 +56,8 @@ namespace desk.page
             {
                 
                 string idtext = id[a];
-                Items.Add(new Item { name = "测试" + idtext +"第"+i});
+                string itemsurl = uri[a]; //bitmap呢？//好吧。。好像绑定不需要这玩意。。
+                Items.Add(new Item { name = "测试" + idtext + "第" + i , itemuri = itemsurl });
                 a++;
             }
         }
