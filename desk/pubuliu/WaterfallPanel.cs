@@ -11,11 +11,21 @@ namespace desk.pubuliu
 {
     class WaterfallPanel: Panel
     {
+
+        public int ColumnNum
+        {
+            get { return (int)GetValue(ColumnCountProperty); }
+            set { SetValue(ColumnCountProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for ColumnCount.  This enables animation, styling, binding, etc...  
+        public static readonly DependencyProperty ColumnCountProperty =
+                    DependencyProperty.Register("ColumnNum", typeof(int), typeof(WaterfallPanel), new PropertyMetadata(2));
+
         //辅助参考http://blog.csdn.net/zmq570235977/article/details/50392283
         //参考原文通过Measure & Arrange实现UWP瀑布流布局http://www.cnblogs.com/ms-uap/p/4715195.html
         protected override Size MeasureOverride(Size availableSize)
         {
-            int ColumnNum = 3;  //Columnnum流的数量 一个int类型。。。话说也可以说是列数目
             // 记录每个流的长度。因为我们用选取最短的流来添加下一个元素。  
             KeyValuePair<double, int>[] flowLens = new KeyValuePair<double, int>[ColumnNum]; 
             foreach (int idx in Enumerable.Range(0, ColumnNum))
@@ -43,7 +53,48 @@ namespace desk.pubuliu
                 flowLens[0] = new KeyValuePair<double, int>(pair.Key + elemLen, pair.Value);
                 flowLens = flowLens.OrderBy(p => p.Key).ToArray();
             }
-            return new Size(availableSize.Width, flowLens.Last().Key);
+            return new Size(availableSize.Width, flowLens.Last().Key);//返回值是该元素本身实际需要的大小。
+        }
+
+        protected override Size ArrangeOverride(Size finalSize)
+        {
+            // 同样记录流的长度。  
+            KeyValuePair<double, int>[] flowLens = new KeyValuePair<double, int>[ColumnNum];
+
+            double flowWidth = finalSize.Width / ColumnNum;
+
+            // 要用到流的横坐标了，我们用一个数组来记录（其实最初是想多加些花样，用数组来方便索引横向偏移。不过本例中就只进行简单的乘法了）  
+            double[] xs = new double[ColumnNum];
+
+            foreach (int idx in Enumerable.Range(0, ColumnNum))
+            {
+                flowLens[idx] = new KeyValuePair<double, int>(0.0, idx);
+                xs[idx] = idx * flowWidth;
+            }
+
+            foreach (UIElement elem in Children)
+            {
+                // 直接获取子控件大小。  
+                Size elemSize = elem.DesiredSize;
+                double elemLen = elemSize.Height;
+
+                var pair = flowLens[0];
+                double chosenFlowLen = pair.Key;
+                int chosenFlowIdx = pair.Value;
+
+                // 此时，我们需要设定新添加的空间的位置了，其实比measure就多了一个Point信息。接在流中上一个元素的后面。  
+                Point pt = new Point(xs[chosenFlowIdx], chosenFlowLen);
+
+                // 调用Arrange进行子控件布局。并让子控件利用上整个流的宽度。  
+                elem.Arrange(new Rect(pt, new Size(flowWidth, elemSize.Height)));
+
+                // 重新计算最短流。  
+                flowLens[0] = new KeyValuePair<double, int>(chosenFlowLen + elemLen, chosenFlowIdx);
+                flowLens = flowLens.OrderBy(p => p.Key).ToArray();
+            }
+
+            // 直接返回该方法的参数。  
+            return finalSize;
         }
     }
 }
