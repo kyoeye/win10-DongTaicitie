@@ -17,7 +17,11 @@
             <ItemsControl.Template>
                 <ControlTemplate>
                     <ScrollViewer>
-                        <ItemsPresenter/>
+                        <StackPanel >
+                            
+                         <ItemsPresenter/>
+                            <Button Content="加载Σ(っ °Д °;)っ" Name="Lodingbutton" Click="Lodingbutton_Click" HorizontalAlignment="Center" Margin="12" />
+                        </StackPanel>
                     </ScrollViewer>
                 </ControlTemplate>
             </ItemsControl.Template>

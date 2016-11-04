@@ -12,7 +12,7 @@ namespace desk.pubuliu
     class WaterfallPanel: Panel
     {
 
-        public int ColumnNum
+        public int ColumnNum //列表可控
         {
             get { return (int)GetValue(ColumnCountProperty); }
             set { SetValue(ColumnCountProperty, value); }

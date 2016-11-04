@@ -1,6 +1,7 @@
 ﻿using desk.cs.item;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -31,8 +32,10 @@ namespace desk.page
         string[] id = new string[50]; //id
         string[] uri = new string[50]; //图片链接
 
+        public ObservableCollection<Item> items { get; set; }
 
-        List<Item> Items = new List<Item>();
+
+        //  List<Item> Items = new List<Item>();
         public itembeta()
         {
             this.InitializeComponent();
@@ -46,25 +49,28 @@ namespace desk.page
         {
             public string name { get; set; }
             public string itemuri { get; set; }
-            //这里还差一个图片链接的封装。。。可是我特么不知道怎么封。。这条注释是最后留的。。。
+
 
         }
         public void itemfc()
         {
+            items = new ObservableCollection<page.itembeta.Item>();
             a = 0;
-            for (int i = 0; i < 50; i++)
+            //原本的i<50       ↓
+            for (int i = 0; i < 2; i++)
             {
-                
-                string idtext = id[a];
-                string itemsurl = uri[a]; //bitmap呢？//好吧。。好像绑定不需要这玩意。。
-                Items.Add(new Item { name = "测试" + idtext + "第" + i , itemuri = itemsurl });
+                //  string idtext = id[a];
+                // string itemsurl = uri[a]; //bitmap呢？//好吧。。好像绑定不需要这玩意。。
+
+                items.Add(new Item { name = "测试" + id[a] + "第" + i, itemuri = uri[a] });
                 a++;
             }
         }
 
         public async void getimage()
         {
-            string homeimguri = "https://yande.re/post.xml?limit=50";
+
+            string homeimguri = ("https://yande.re/post.xml?limit=50");
             var xmlstring = await XMLhelper.Getxmlstring(homeimguri, null);
 
             XElement root = XElement.Parse(xmlstring);
@@ -82,7 +88,7 @@ namespace desk.page
                     {
                         if (item.Name == "id")
                         {
-                            
+
                             id[a] = (string)item;
                         }
                         if (item.Name == "preview_url")
@@ -97,15 +103,29 @@ namespace desk.page
                     }
                     else
                     {
-                        
+
                         return;
                     }
                 }
 
-                
+
             }
             itemfc();
-            Mygridview.ItemsSource = Items ;
+            Mygridview.ItemsSource = items;
+        }
+        public int cc = 1;
+        private void Lodingbutton_Click(object sender, RoutedEventArgs e)
+        {
+            int count = items.Count;
+
+
+
+            for (int i = count; i < count + cc; i++)
+            {
+                items.Add(new Item { name = "测试" + id[count] + "第" + i, itemuri = uri[count] });
+
+            }
+            //cc++;
         }
     }
 }
