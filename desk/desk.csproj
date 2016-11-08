@@ -100,11 +100,15 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="cs\item\XMLhelper.cs" />
+    <Compile Include="cs\jsproxy.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="page\itembeta.xaml.cs">
       <DependentUpon>itembeta.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="page\jsitempage.xaml.cs">
+      <DependentUpon>jsitempage.xaml</DependentUpon>
     </Compile>
     <Compile Include="page\Socketpage.xaml.cs">
       <DependentUpon>Socketpage.xaml</DependentUpon>
@@ -138,6 +142,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="page\itembeta.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="page\jsitempage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

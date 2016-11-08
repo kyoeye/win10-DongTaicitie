@@ -50,5 +50,10 @@ namespace desk
         {
             Myfrome.Navigate(typeof(itembeta));
         }
+
+        private void mybutton4_Click(object sender, RoutedEventArgs e)
+        {
+            Myfrome.Navigate(typeof(jsitempage));
+        }
     }
 }

@@ -1,7 +1,8 @@
 ﻿<Page
-    x:Class="desk.page.itembeta"
+    x:Class="desk.page.jsitempage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"  
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+
     xmlns:local="using:desk.pubuliu" 
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -19,7 +20,7 @@
                     <ScrollViewer>
                         <StackPanel >
                             <ItemsPresenter/>
-                            <Button Content="加载Σ(っ °Д °;)っ" Name="Lodingbutton" Click="Lodingbutton_Click" HorizontalAlignment="Center" Margin="12" />
+                            <Button Content="加载Σ(っ °Д °;)っ" Name="Lodingbutton"  HorizontalAlignment="Center" Margin="12" />
                         </StackPanel>
                     </ScrollViewer>
                 </ControlTemplate>
